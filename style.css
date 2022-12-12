@@ -1,0 +1,90 @@
+body {
+    background-color: #2B2539;    
+}
+
+
+.pickr .pcr-button {
+    width: 200px; 
+    height: 223px;
+    margin-right: 40px;
+    border-radius: 50px 20px 0 0;
+}
+
+.pcr-app {
+    border-radius: 10px;
+}
+
+.picker.pcr-app input.pcr-save:before {
+    background-color: #5417E5;
+    color: #2B2539;
+}
+
+.blurBox {
+    width: 200px; 
+    height: 103px; 
+    background-color: #c6c6c66c; 
+    margin-right: 40px; 
+    -webkit-backdrop-filter: blur(25px); 
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.blurBox:hover {
+    box-shadow: 0 0 20px #ffffff30;
+    transition: .2s;
+}
+
+.blurBox p {
+    font-family: Helvetica regular, sans-serif;
+    color: #ffffff;
+}
+
+#colorText1 {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#colorText2 {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#colorText3 {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#colorText4 {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.showResults {
+    width: 202px; 
+    height: 56px; 
+    background-color: #5417E5; 
+    border-radius: 40px; 
+    color: white; 
+    font-size: 20px; 
+    font-weight: 600;
+    border: none;
+    transition: .2s;
+}
+
+.showResults:hover {
+    background-color: #ffffff;
+    /* border: 2px solid #ffffff; */
+    color: #5417E5;
+    transition: .2s;
+    
+}
+
+.checkbox {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
