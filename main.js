@@ -144,3 +144,5 @@ document.getElementById('showResults').addEventListener('click', () => {
     console.log(colorVals)
     window.location.href = `./results.html?${colorVals}`
 })
+
+//test
