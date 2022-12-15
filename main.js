@@ -97,6 +97,7 @@ const pickr3 = Pickr.create({
 
 
 const colorVals = []
+var color1
 
 pickr.on('save',(color, instance) => {
     const newColor1 =  color.toHEXA().toString()
@@ -105,7 +106,8 @@ pickr.on('save',(color, instance) => {
     var n_match1 = ntc.name(newColor1);
     n_name1 = n_match1[1]; // Text string: Color name
     document.getElementById('colorText1').innerHTML = newColor1 + "<br>" + n_match1[1]
-    colorVals[0] = newRGB1
+    colorVals[0] = newColor1
+    //localStorage.setItem('color1', newColor1)
 })
 
 pickr1.on('save',(color, instance) => {
@@ -115,7 +117,8 @@ pickr1.on('save',(color, instance) => {
     var n_match2 = ntc.name(newColor2);
     n_name2 = n_match2[1]; // Text string: Color name
     document.getElementById('colorText2').innerHTML = newColor2 + "<br>" + n_match2[1]
-    colorVals[1] = newRGB2
+    colorVals[1] = newColor2
+    //localStorage.setItem('color2', newColor2)
 })
 
 pickr2.on('save',(color, instance) => {
@@ -125,7 +128,8 @@ pickr2.on('save',(color, instance) => {
     var n_match3 = ntc.name(newColor3);
     n_name3 = n_match3[1]; // Text string: Color name
     document.getElementById('colorText3').innerHTML = newColor3 + "<br>" + n_match3[1]
-    colorVals[2] = newRGB3
+    colorVals[2] = newColor3
+    //localStorage.setItem('color3', newColor3)
 })
 
 pickr3.on('save',(color, instance) => {
@@ -136,13 +140,17 @@ pickr3.on('save',(color, instance) => {
     var n_match4 = ntc.name(newColor4);
     n_name4 = n_match4[1]; // Text string: Color name
     document.getElementById('colorText4').innerHTML = newColor4 + "<br>" + n_match4[1]
-    colorVals[3] = newRGB4
+    colorVals[3] = newColor4
+    //localStorage.setItem('color4', newColor4)
+    
 })
 
 // when clicking on the showResults button the colorVals array is passed to the results page
 document.getElementById('showResults').addEventListener('click', () => {
     console.log(colorVals)
-    window.location.href = `./results.html?${colorVals}`
+    alert(colorVals)
+    localStorage.setItem('colors', JSON.stringify(colorVals)); 
+    //window.location.href = `./results.html?${colorVals}`
+    //localStorage.setItem('colorVals', colorVals)
+    //localStorage.setItem("storedColors", JSON.stringify(colorVals));
 })
-
-//test
