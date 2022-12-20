@@ -96,8 +96,14 @@ const pickr3 = Pickr.create({
 });
 
 
-const colorVals = []
+const colorVals = ['#4B74E2', '#DE5457', '#F77D41', '#089BA3']
 var color1
+
+var check1 = 0
+var check2 = 0
+var check3 = 0
+var check4 = 0
+
 
 pickr.on('save',(color, instance) => {
     const newColor1 =  color.toHEXA().toString()
@@ -107,7 +113,8 @@ pickr.on('save',(color, instance) => {
     n_name1 = n_match1[1]; // Text string: Color name
     document.getElementById('colorText1').innerHTML = newColor1 + "<br>" + n_match1[1]
     colorVals[0] = newColor1
-    //localStorage.setItem('color1', newColor1)
+    check1 = 1
+    document.getElementById('bg').style.background = "linear-gradient(-200deg, " + colorVals[0]+ " 18%, " + colorVals[1]+" 48%, "+ colorVals[2]+ " 59%, " + colorVals[3] + " 100%)"
 })
 
 pickr1.on('save',(color, instance) => {
@@ -118,6 +125,8 @@ pickr1.on('save',(color, instance) => {
     n_name2 = n_match2[1]; // Text string: Color name
     document.getElementById('colorText2').innerHTML = newColor2 + "<br>" + n_match2[1]
     colorVals[1] = newColor2
+    check2 = 1
+    document.getElementById('bg').style.background = "linear-gradient(-200deg, " + colorVals[0]+ " 18%, " + colorVals[1]+" 48%, "+ colorVals[2]+ " 59%, " + colorVals[3] + " 100%)"
     //localStorage.setItem('color2', newColor2)
 })
 
@@ -129,6 +138,8 @@ pickr2.on('save',(color, instance) => {
     n_name3 = n_match3[1]; // Text string: Color name
     document.getElementById('colorText3').innerHTML = newColor3 + "<br>" + n_match3[1]
     colorVals[2] = newColor3
+    check3 = 1
+    document.getElementById('bg').style.background = "linear-gradient(-200deg, " + colorVals[0]+ " 18%, " + colorVals[1]+" 48%, "+ colorVals[2]+ " 59%, " + colorVals[3] + " 100%)"
     //localStorage.setItem('color3', newColor3)
 })
 
@@ -141,6 +152,8 @@ pickr3.on('save',(color, instance) => {
     n_name4 = n_match4[1]; // Text string: Color name
     document.getElementById('colorText4').innerHTML = newColor4 + "<br>" + n_match4[1]
     colorVals[3] = newColor4
+    check4 = 1
+    document.getElementById('bg').style.background = "linear-gradient(-200deg, " + colorVals[0]+ " 18%, " + colorVals[1]+" 48%, "+ colorVals[2]+ " 59%, " + colorVals[3] + " 100%)"
     //localStorage.setItem('color4', newColor4)
     
 })
@@ -148,9 +161,17 @@ pickr3.on('save',(color, instance) => {
 // when clicking on the showResults button the colorVals array is passed to the results page
 document.getElementById('showResults').addEventListener('click', () => {
     console.log(colorVals)
-    alert(colorVals)
+    //alert(colorVals)
     localStorage.setItem('colors', JSON.stringify(colorVals)); 
-    //window.location.href = `./results.html?${colorVals}`
-    //localStorage.setItem('colorVals', colorVals)
-    //localStorage.setItem("storedColors", JSON.stringify(colorVals));
 })
+
+
+function results() {
+    if (check1 == 1 && check2 == 1 && check3 == 1 && check4 == 1){
+        window.location.assign('results.html');
+        return false;
+    }
+    alert("Please make your color selection before proceeding")
+}
+
+

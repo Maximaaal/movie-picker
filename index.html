@@ -13,8 +13,10 @@
     
     
 </head>
-<body>
+<body id="bg">
     <!-- four rectangles horizontally centred on the screen -->
+    <div id="bgOverlay"></div>
+    <img id="help" src="img/help.svg" alt="">
     <div style="width: 100%; height: 80vh; display: flex; justify-content: center; align-items: center;">
         <div class="colorBox" id="box1" style="width: 200px; height: 223px; background-color: #4B74E2; margin-right: 40px; border-radius: 20px 20px 0 0"></div>
         <div class="colorBox1" style="width: 200px; height: 223px; background-color: #DE5457; margin-right: 40px; border-radius: 20px 20px 0 0"></div>
@@ -38,8 +40,8 @@
     </div>
     <!-- centered button -->
     <div style="width: 100%; height: 40vh; display: flex; justify-content: center; align-items: center;">
-        <form action="results.html">
-            <button class="showResults" id="showResults" style="">Show results</button>
+        <form action="">
+            <button class="showResults" id="showResults" type="submit" onclick="return results()">Show results</button>
         </form>
     </div>
     <!-- add text with a checkbox next to it -->

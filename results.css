@@ -2,18 +2,102 @@ body {
     background: rgb(2,0,36);
     /* background: linear-gradient(90deg, #ffffff 0%, #f00606 0%, #3e3e3e 100%); */
     background: linear-gradient(to right, green , teal);
+    height: 100%;
+    width: 100%;
     
 }
+
+#bgOverlay {
+    padding: 0px;
+    position: fixed;
+    height: 101vh;
+    width: 102vw;
+    margin: -10px;
+    background-color: rgba(0, 0, 0, 0.792);
+    -webkit-backdrop-filter: blur(250px); 
+    backdrop-filter: blur(25px);
+    z-index: -1;
+}
+
 .sidebar{
     background-color: #ffffff23;
-    height: 450px;
+    /* height: 450px; */
     width: 210px;
     position: fixed;
-    top: 30px;
+    top: 100px;
     left: 30px;
     border-radius: 20px;
     -webkit-backdrop-filter: blur(25px); 
     backdrop-filter: blur(25px);
     color: #ffffff;
     font-family: Helvetica regular, sans-serif;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+#genre {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: Helvetica regular, sans-serif;
+}
+
+.grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    grid-gap: 40px;
+    align-items: stretch;
+    margin-left: 300px;
+    margin-top: 0px;
+    margin-right: 100px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    }
+
+.grid img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+#back {
+    margin-left: 23px;
+    top: 10px;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    transition: .2s;
+    color: #ffffff;
+    padding-top: 15px;
+    font-family: Helvetica regular, sans-serif;
+}
+
+#back:hover {
+    cursor: pointer;
+    /* text-decoration: underline; */
+}
+
+#backButton {
+    border-radius: 10px;
+    background-color: #ffffff23;
+    -webkit-backdrop-filter: blur(25px); 
+    backdrop-filter: blur(25px);
+    height: 33px;
+    width: 33px;
+    margin-right: 10px;
+    display: flex;
+    transition: .2s;
+}
+
+#back:hover #backButton {
+    background-color: #ffffff5d;
+    transition: .2s;
+}
+
+#backButton img {
+    margin: auto;
+    width: 15px;
+    height: 15px;
 }
