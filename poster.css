@@ -1,0 +1,99 @@
+#bgOverlay {
+    padding: 0px;
+    position: fixed;
+    height: 101vh;
+    width: 102vw;
+    margin: -10px;
+    background-color: rgba(0, 0, 0, 0.792);
+    -webkit-backdrop-filter: blur(250px); 
+    backdrop-filter: blur(25px);
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+}
+
+#back {
+    margin-left: 23px;
+    top: 10px;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    transition: .2s;
+    color: #ffffff;
+    padding-top: 15px;
+    font-family: Helvetica regular, sans-serif;
+}
+
+#back:hover {
+    cursor: pointer;
+    /* text-decoration: underline; */
+}
+
+#backButton {
+    border-radius: 10px;
+    background-color: #ffffff23;
+    -webkit-backdrop-filter: blur(25px); 
+    backdrop-filter: blur(25px);
+    height: 33px;
+    width: 33px;
+    margin-right: 10px;
+    display: flex;
+    transition: .2s;
+}
+
+#back:hover #backButton {
+    background-color: #ffffff5d;
+    transition: .2s;
+}
+
+#backButton img {
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+
+#movieInfo {
+    margin-left: 100px;
+    margin-top: 0px;
+    margin-right: 100px;
+    padding-top: 100px;
+    /* padding-bottom: 200px; */
+    font-family: Helvetica bold, sans-serif;
+    color: #ffffff;
+    width: 422px;
+}
+
+#movieInfo p {
+    font-size: 14px;
+    margin-bottom: 0px;
+    font-family: Helvetica;
+}
+
+
+#movieInfo h2 {
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: Helvetica bold;
+}
+
+#genreSection {
+    display: flex;
+}
+
+#genre {
+    font-family: Helvetica;
+    background-color: #ffffff66;
+    padding: 10px 20px 10px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+#moviePoster {
+    float: right;
+    width: 400px;
+    margin-top: -260px;
+    margin-right: 300px;
+}

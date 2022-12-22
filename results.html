@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
     <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body id="bg">
   <div id="bgOverlay"></div>
@@ -18,13 +20,29 @@
       </div>
   </a>
       <main class="grid">
-        <img src="https://image.tmdb.org/t/p/original/7G9915LfUQ2lVfwMEEhDsn3kT4B.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/vzmL6fP7aPKNKPRTFnZmiUfciyV.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/nLvUdqgPgm3F85NMCii9gVFUcet.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/nts4iOmNnq7GNicycMJ9pSAn204.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/HORpg5CSkmeQlAolx3bKMrKgfi.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/w0ZgH6Lgxt2bQYnf1ss74UvYftm.jpg" alt="Sample photo">
-        <img src="https://image.tmdb.org/t/p/original/w0ZgH6Lgxt2bQYnf1ss74UvYftm.jpg" alt="Sample photo">  
+        <a href="result1.html">
+            <img id="poster0" data-name="Toy Story" data-year="2015" src="">
+        </a>
+        <a href="result2.html">
+            <img id="poster1" data-name="Jumani" data-year="1996" src="">
+        </a>
+       <a href="result3.html">
+            <img id="poster2" src="">
+       </a>
+       <a href="result4.html">
+            <img id="poster3" src="">
+       </a>
+       <a href="result5.html">
+            <img id="poster4" src="">
+       </a>
+        <a href="result6.html">
+            <img id="poster5" src="">
+        </a>
+        <a href="reults7.html">
+            <img id="poster6" src="">  
+        </a>
+        
+        
       </main>
         <div class="sidebar">
             <p id="genre">Genre's</p>
@@ -38,6 +56,92 @@
             </ul>
         </div>
         
+    
+    <py-config>
+        terminal = false
+        packages = ["matplotlib", "pandas"]
+      </py-config>
+    
+    <py-script>
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from pyodide.http import open_url
+from pyodide.ffi import create_proxy
+
+from js import name, storedColors
+
+def hex2rgb(hex_value):
+    h = hex_value.strip("#")
+    rgb = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+    return rgb
+
+def rgb2hsv(r, g, b):
+ r, g, b = r / 255.0, g / 255.0, b / 255.0
+
+ max_rgb = max(r, g, b)
+ min_rgb = min(r, g, b)
+ difference = max_rgb-min_rgb
+
+ if max_rgb == min_rgb:
+     h = 0
+ elif max_rgb == r:
+     h = (60 * ((g - b) / difference) + 360) % 360
+ elif max_rgb == g:
+     h = (60 * ((b - r) / difference) + 120) % 360
+ elif max_rgb == b:
+     h = (60 * ((r - g) / difference) + 240) % 360
+ if max_rgb == 0:
+     s = 0
+ else:
+     s = (difference / max_rgb) * 100
+ v = max_rgb * 100
+ return tuple(map(round, (h, s, v)))
+
+url = ("https://raw.githubusercontent.com/Maximaaal/movie-picker/main/colors2.csv")
+df = pd.read_csv(open_url(url))
+
+
+source = rgb2hsv(*hex2rgb(storedColors[0]))
+source2 = rgb2hsv(*hex2rgb(storedColors[1]))
+
+tolerance = 40
+df2=df.loc[((df['color1_h'] > source[0] - tolerance) & (df['color1_h'] < source[0]+ tolerance)
+& (df['color1_s'] > source[1] - tolerance) & (df['color1_s'] < source[1]+ tolerance)
+& (df['color1_b'] > source[2] - tolerance) & (df['color1_b'] < source[2]+ tolerance)) |
+((df['color2_h'] > source[0] - tolerance) & (df['color2_h'] < source[0]+ tolerance)
+& (df['color2_s'] > source[1] - tolerance) & (df['color2_s'] < source[1]+ tolerance)
+& (df['color2_b'] > source[2] - tolerance) & (df['color2_b'] < source[2]+ tolerance)) ]
+
+df3=df2.loc[((df['color1_h'] > source2[0] - tolerance) & (df['color1_h'] < source2[0]+ tolerance)
+& (df['color1_s'] > source2[1] - tolerance) & (df['color1_s'] < source2[1]+ tolerance)
+& (df['color1_b'] > source[2] - tolerance) & (df['color1_b'] < source2[2]+ tolerance)) |
+((df['color2_h'] > source2[0] - tolerance) & (df['color2_h'] < source2[0]+ tolerance)
+& (df['color2_s'] > source2[1] - tolerance) & (df['color2_s'] < source2[1]+ tolerance)
+& (df['color2_b'] > source2[2] - tolerance) & (df['color2_b'] < source2[2]+ tolerance)) ]
+
+print(storedColors[0])
+print(storedColors[1])
+
+# this outputs different images when the color value changes
+print(df2["img_url"].unique())
+print(df3["img_url"].unique())
+
+# this outputs the same images every time
+print(df.loc[0,'img_url'])
+print(df.loc[1,'img_url'])
+
+
+
+
+
+    </py-script>
+
     <script src="results.js"></script>
+    
+    <button onclick="showResults()">Show Results</button>
+    <script>
+        
+    </script>
 </body>
 </html>
