@@ -23,23 +23,53 @@
         <a href="result1.html">
             <img id="poster0" data-name="Toy Story" data-year="2015" src="">
         </a>
-        <a href="result2.html">
+        <a href="result1.html">
             <img id="poster1" data-name="Jumani" data-year="1996" src="">
         </a>
-       <a href="result3.html">
+       <a href="result1.html">
             <img id="poster2" src="">
        </a>
-       <a href="result4.html">
+       <a href="result1.html">
             <img id="poster3" src="">
        </a>
-       <a href="result5.html">
+       <a href="result1.html">
             <img id="poster4" src="">
        </a>
-        <a href="result6.html">
+        <a href="result1.html">
             <img id="poster5" src="">
         </a>
-        <a href="reults7.html">
+        <a href="result1.html">
             <img id="poster6" src="">  
+        </a>
+        <a href="result1.html">
+            <img id="poster7" src="">  
+        </a>
+        <a href="result1.html">
+            <img id="poster8" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster9" src=""> 
+        </a>
+        <a href="result1.html">
+            <img id="poster10" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster11" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster12" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster13" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster14" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster15" src="">
+        </a>
+        <a href="result1.html">
+            <img id="poster16" src="">
         </a>
         
         
@@ -105,7 +135,7 @@ df = pd.read_csv(open_url(url))
 source = rgb2hsv(*hex2rgb(storedColors[0]))
 source2 = rgb2hsv(*hex2rgb(storedColors[1]))
 
-tolerance = 40
+tolerance = 35
 df2=df.loc[((df['color1_h'] > source[0] - tolerance) & (df['color1_h'] < source[0]+ tolerance)
 & (df['color1_s'] > source[1] - tolerance) & (df['color1_s'] < source[1]+ tolerance)
 & (df['color1_b'] > source[2] - tolerance) & (df['color1_b'] < source[2]+ tolerance)) |
@@ -127,19 +157,68 @@ print(storedColors[1])
 print(df2["img_url"].unique())
 print(df3["img_url"].unique())
 
+df3 = df3.reset_index(drop=True)
+
 # this outputs the same images every time
-print(df.loc[0,'img_url'])
-print(df.loc[1,'img_url'])
+print(df3.loc[0,'img_url'])
+#print(df.loc[1,'img_url'])
 
+output0 = df3.loc[1,'img_url']
+output1 = df3.loc[2,'img_url']
+output2 = df3.loc[3,'img_url']
+output3 = df3.loc[4,'img_url']
+output4 = df3.loc[5,'img_url']
+output5 = df3.loc[6,'img_url']
+output6 = df3.loc[7,'img_url']
+output7 = df3.loc[8,'img_url']
+output8 = df3.loc[9,'img_url']
+output9 = df3.loc[10,'img_url']
+output10 = df3.loc[11,'img_url']
+output11 = df3.loc[12,'img_url']
+output12 = df3.loc[13,'img_url']
+output13 = df3.loc[14,'img_url']
+output14 = df3.loc[15,'img_url']
+output15 = df3.loc[16,'img_url']
 
+output0title = df3.loc[1,'title']
+output1title = df3.loc[2,'title']
+output2title = df3.loc[3,'title']
+output3title = df3.loc[4,'title']
+output4title = df3.loc[5,'title']
+output5title = df3.loc[6,'title']
+output6title = df3.loc[7,'title']
+output7title = df3.loc[8,'title']
+output8title = df3.loc[9,'title']
+output9title = df3.loc[10,'title']
+output10title = df3.loc[11,'title']
+output11title = df3.loc[12,'title']
+output12title = df3.loc[13,'title']
+output13title = df3.loc[14,'title']
+output14title = df3.loc[15,'title']
+output15title = df3.loc[16,'title']
 
-
+output0genre = df3.loc[1,'genre']
+output1genre = df3.loc[2,'genre']
+output2genre = df3.loc[3,'genre']
+output3genre = df3.loc[4,'genre']
+output4genre = df3.loc[5,'genre']
+output5genre = df3.loc[6,'genre']
+output6genre = df3.loc[7,'genre']
+output7genre = df3.loc[8,'genre']
+output8genre = df3.loc[9,'genre']
+output9genre = df3.loc[10,'genre']
+output10genre = df3.loc[11,'genre']
+output11genre = df3.loc[12,'genre']
+output12genre = df3.loc[13,'genre']
+output13genre = df3.loc[14,'genre']
+output14genre = df3.loc[15,'genre']
+output15genre = df3.loc[16,'genre']
 
     </py-script>
 
     <script src="results.js"></script>
     
-    <button onclick="showResults()">Show Results</button>
+    <button id="showResults" onclick="showResults()">Show Results</button>
     <script>
         
     </script>

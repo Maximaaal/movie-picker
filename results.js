@@ -1,5 +1,5 @@
 var storedColors = JSON.parse(localStorage.getItem("colors"));
-document.getElementById('bg').style.background = "linear-gradient(-200deg, " + storedColors[0]+ " 18%, " + storedColors[1]+" 48%, "+ storedColors[2]+ " 59%, " + storedColors[3] + " 100%)";
+document.getElementById('bg').style.background = "linear-gradient(-200deg, " + storedColors[0]+ " 0%, " + storedColors[1]+" 100%)"
 
 var movieName = []
 var storedPosterName = []
@@ -17,10 +17,6 @@ var retrievedName = []
 // }
 
 
-
-
-
-
 var name1 = document.getElementById('poster1').getAttribute("data-name")
 localStorage.setItem('posterName1', JSON.stringify(name1))
 var storedPosterName1 = JSON.parse(localStorage.getItem("posterName1"));
@@ -31,24 +27,24 @@ localStorage.setItem('posterYear', JSON.stringify(year))
 var storedPosterYear = JSON.parse(localStorage.getItem("posterYear"));
 console.log(storedPosterYear)
 
-
-
 function showResults(){
-    console.log(`output0 = ${pyscript.runtime.globals.get('output0')}`)
-    console.log(`output1 = ${pyscript.runtime.globals.get('output1')}`)
-    console.log(`output2 = ${pyscript.runtime.globals.get('output2')}`)
-    console.log(`output3 = ${pyscript.runtime.globals.get('output3')}`)
-    console.log(`output4 = ${pyscript.runtime.globals.get('output4')}`)
-    console.log(`output5 = ${pyscript.runtime.globals.get('output5')}`)
-    console.log(`output6 = ${pyscript.runtime.globals.get('output6')}`)
-    
-    document.getElementById('poster0').src = `${pyscript.runtime.globals.get('output0')}`
-    document.getElementById('poster1').src = `${pyscript.runtime.globals.get('output1')}`
-    document.getElementById('poster2').src = `${pyscript.runtime.globals.get('output2')}`
-    document.getElementById('poster3').src = `${pyscript.runtime.globals.get('output3')}`
-    document.getElementById('poster4').src = `${pyscript.runtime.globals.get('output4')}`
-    document.getElementById('poster5').src = `${pyscript.runtime.globals.get('output5')}`
-    document.getElementById('poster6').src = `${pyscript.runtime.globals.get('output6')}`
-
+    for (let i = 0; i < 17; i++) {
+        console.log(`${pyscript.runtime.globals.get('output' + i)}`)
+        document.getElementById('poster' + i).src = `${pyscript.runtime.globals.get('output' + i)}`
+        document.getElementById('poster' + i).addEventListener('click', function() {
+            localStorage.setItem('result',(i))
+            localStorage.setItem('title', `${pyscript.runtime.globals.get('output' + i + 'title')}`)
+            localStorage.setItem('img', `${pyscript.runtime.globals.get('output' + i)}`)
+            localStorage.setItem('genre', `${pyscript.runtime.globals.get('output' + i + 'genre')}`)
+            var storedResult = (localStorage.getItem("result"))
+            var storedTitle = (localStorage.getItem("title"))
+            var storedImg = (localStorage.getItem("img"))
+            var storedGenre = (localStorage.getItem("genre"))
+            console.log(storedResult)
+            console.log(storedTitle)
+            console.log(storedImg)
+            console.log(storedGenre)
+        })
+    }
 }
 
