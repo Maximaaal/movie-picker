@@ -95,6 +95,7 @@
     <py-script>
 import pandas as pd
 import matplotlib.pyplot as plt
+import js
 
 from pyodide.http import open_url
 from pyodide.ffi import create_proxy
@@ -154,13 +155,13 @@ print(storedColors[0])
 print(storedColors[1])
 
 # this outputs different images when the color value changes
-print(df2["img_url"].unique())
-print(df3["img_url"].unique())
+#print(df2["img_url"].unique())
+#print(df3["img_url"].unique())
 
 df3 = df3.reset_index(drop=True)
 
 # this outputs the same images every time
-print(df3.loc[0,'img_url'])
+#print(df3.loc[0,'img_url'])
 #print(df.loc[1,'img_url'])
 
 output0 = df3.loc[1,'img_url']
@@ -213,6 +214,12 @@ output12genre = df3.loc[13,'genre']
 output13genre = df3.loc[14,'genre']
 output14genre = df3.loc[15,'genre']
 output15genre = df3.loc[16,'genre']
+
+obj = {
+    "loadingStatus": 1
+}
+
+js.put_object(obj)
 
     </py-script>
 
