@@ -114,7 +114,7 @@ body {
     margin-right: 40px;
 }
 
-#help {
+#helpButton img {
     display: block;
     position: absolute;
     margin: 10px;
@@ -122,3 +122,57 @@ body {
     height: 40px;
 }
 
+#helpButton:hover {
+    cursor: pointer;
+}
+
+#title {
+    margin-top: -400px;
+    margin-left: -35px;
+    position: absolute;
+    color: white;
+    font-family: Helvetica regular, sans-serif;
+    font-size: 20px;
+}
+
+/* #helpModal {
+    background: white;
+    position: absolute;
+    display: none;
+} */
+
+/* #helpModal white rectangle centered on the screen with black text */
+#helpModal {
+    display: block;
+    position: absolute;
+    background-color: #8c8c8c55; 
+    margin-right: 40px; 
+    -webkit-backdrop-filter: blur(25px); 
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+    width: 300px;
+    height: 500px;
+    top: 20px;
+    left: 90px;
+    padding: 20px;
+    color: #ffffff;
+    font-family: Helvetica regular, sans-serif;
+    font-size: 15px;
+    box-shadow: 0 0 50px #00000030;
+    z-index: 3;
+    transition: 1s;
+    line-height: 18px;
+}
+
+#modalCloseButton {
+    position: relative;
+    background-color: white;
+    width: 100px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    /* center */
+    margin: 0 auto;
+    top: 25px;
+    border-radius: 100px;
+}
