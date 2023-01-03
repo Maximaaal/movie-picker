@@ -89,7 +89,8 @@ pickr1.on('save',(color, instance) => {
 
 document.getElementById('showResults').addEventListener('click', () => {
     console.log(colorVals)
-    localStorage.setItem('colors', JSON.stringify(colorVals)); 
+    localStorage.setItem('colors', JSON.stringify(colorVals));
+    localStorage.setItem('tolerance', slider.value) 
 })
 
 
@@ -109,3 +110,23 @@ document.getElementById('helpButton').addEventListener('click', () => {
 document.getElementById('modalCloseButton').addEventListener('click', () => {
     document.getElementById('helpModal').style.display = "none"
 })
+
+function showTolerance(){
+    if (document.getElementById('toleranceCheck').checked == true) {
+        document.getElementById('toleranceSlider').style.display = 'block'
+        document.getElementById('toleranceOutput').style.display = 'block'
+        console.log('checked')
+    } else {
+        document.getElementById('toleranceSlider').style.display = 'none'
+        document.getElementById('toleranceOutput').style.display = 'none'
+        console.log('unchecked')
+    }
+}
+
+var slider = document.getElementById("toleranceSlider")
+var output = document.getElementById("toleranceOutput")
+output.innerHTML = slider.value + "%" 
+
+slider.oninput = function() {
+  output.innerHTML = this.value + "%"
+}

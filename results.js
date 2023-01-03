@@ -1,5 +1,8 @@
-var storedColors = JSON.parse(localStorage.getItem("colors"));
+var storedColors = JSON.parse(localStorage.getItem("colors"))
 document.getElementById('bg').style.background = "linear-gradient(-200deg, " + storedColors[0]+ " 0%, " + storedColors[1]+" 100%)"
+
+var toleranceValue = (localStorage.getItem('tolerance'))
+console.log(toleranceValue)
 
 function put_object(obj){
     var finishedLoading = obj.get("loadingStatus")

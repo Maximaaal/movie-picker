@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
     <link rel="stylesheet" href="results.css">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body id="bg">
@@ -100,7 +101,7 @@ import js
 from pyodide.http import open_url
 from pyodide.ffi import create_proxy
 
-from js import name, storedColors
+from js import name, storedColors, toleranceValue
 
 def hex2rgb(hex_value):
     h = hex_value.strip("#")
@@ -132,11 +133,13 @@ def rgb2hsv(r, g, b):
 url = ("https://raw.githubusercontent.com/Maximaaal/movie-picker/main/colors2.csv")
 df = pd.read_csv(open_url(url))
 
+print(toleranceValue)
+print(toleranceValue.replace('"', ''))
 
 source = rgb2hsv(*hex2rgb(storedColors[0]))
 source2 = rgb2hsv(*hex2rgb(storedColors[1]))
-
-tolerance = 35
+toleranceValue = int(float(toleranceValue.replace('"', '')))
+tolerance = toleranceValue
 df2=df.loc[((df['color1_h'] > source[0] - tolerance) & (df['color1_h'] < source[0]+ tolerance)
 & (df['color1_s'] > source[1] - tolerance) & (df['color1_s'] < source[1]+ tolerance)
 & (df['color1_b'] > source[2] - tolerance) & (df['color1_b'] < source[2]+ tolerance)) |
@@ -225,9 +228,11 @@ js.put_object(obj)
 
     <script src="results.js"></script>
     
-    <button id="showResults" onclick="showResults()">Show Results</button>
-    <script>
+    <!-- <button id="showResults" onclick="showResults()">Show Results</button> -->
+    <p id="showResults">Loading results...</p>
+    <img id="loadingIcon" src="img/loading.gif" alt="">
+   
         
-    </script>
+
 </body>
 </html>
