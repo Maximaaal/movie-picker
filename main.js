@@ -130,3 +130,17 @@ output.innerHTML = slider.value + "%"
 slider.oninput = function() {
   output.innerHTML = this.value + "%"
 }
+
+var adultRating
+
+function checkAdult() {
+    if (document.getElementById('adultCheck').checked == true) {
+        adultRating = 1
+        localStorage.setItem('adultRating', adultRating)
+        console.log(adultRating)
+    } else {
+        adultRating = 0
+        localStorage.setItem('adultRating', adultRating)
+        console.log(adultRating)
+    }
+}
